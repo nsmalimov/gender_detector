@@ -6,8 +6,8 @@ import sklearn.feature_extraction as fe
 from gensim.models import KeyedVectors
 from scipy.sparse import hstack, csr_matrix
 
-from ml_processing.pathes import path_to_data, path_to_w2v_models
-
+from expirements.pathes import path_to_data, path_to_w2v_models
+from expirements.util_funcs import write_texts, write_labels
 
 # f - 0
 # m - 1
@@ -38,10 +38,8 @@ def prepare():
 texts, labels = prepare()
 
 
-# write_texts(texts)
-# write_labels(labels)
-
-# exit()
+write_texts(texts)
+write_labels(labels)
 
 class SentencesIterator(object):
     def __init__(self, corpus_dir, filenames):
@@ -65,8 +63,6 @@ def create_w2v_own():
 
 # create_w2v_own()
 
-# exit()
-
 def create_vectorizer(texts, use_if_idf=False):
     if use_if_idf:
         # изменить параметры
@@ -81,7 +77,6 @@ def create_vectorizer(texts, use_if_idf=False):
 
 
 create_vectorizer(texts, use_if_idf=False)
-
 
 def get_vectors_by_texts_w2v_model(w2v, texts):
     arr = []
@@ -116,11 +111,9 @@ def write_vec_w2v_1():
                         "ruscorpora_1_600_2.bin",  # 400,
                         "ruscorpora_1_300_10.bin"]  # 200 NOUN, ADJ
 
-    w2v_big = KeyedVectors.load_word2vec_format(path_to_w2v_models + exist_big_models[1], binary=True)
+    w2v_big = KeyedVectors.load_word2vec_format(path_to_w2v_models + exist_big_models[0], binary=True)
 
     vec_w2v_1 = get_vectors_by_texts_w2v_model(w2v_big, texts)
-
-    np.savetxt(path_to_data + "vec_w2v_1_no_label", vec_w2v_1, delimiter=',')
 
     print(vec_w2v_1.shape)
 
@@ -128,11 +121,11 @@ def write_vec_w2v_1():
 
     print(vec_w2v_1.shape)
 
-    np.savetxt(path_to_data + "vec_w2v_1_exist_label", vec_w2v_1, delimiter=',')
+    np.savetxt(path_to_data + "vec_w2v_1", vec_w2v_1, delimiter=',')
 
 
 #write_vec_w2v_1()
-#exit()
+
 
 def write_vec_w2v_2():
     w2v_own = KeyedVectors.load_word2vec_format(path_to_w2v_models + "/own_w2v_model", binary=True)
@@ -141,14 +134,11 @@ def write_vec_w2v_2():
 
     print(vec_w2v_2.shape)
 
-    # TODO add slice
-    np.savetxt(path_to_data + "vec_w2v_2_no_label", vec_w2v_2, delimiter=',')
-
     vec_w2v_2 = np.append(vec_w2v_2, np.reshape(labels, (len(labels), 1)), axis=1)
 
     print(vec_w2v_2.shape)
 
-    np.savetxt(path_to_data + "vec_w2v_2_exist_label", vec_w2v_2, delimiter=',')
+    np.savetxt(path_to_data + "vec_w2v_2", vec_w2v_2, delimiter=',')
 
 
 #write_vec_w2v_2()
@@ -163,8 +153,8 @@ def write_vectorizer():
         pickle.dump(vec_vectorizer, f)
 
 
-#write_vectorizer()
-#exit()
+write_vectorizer()
+
 
 def data_processing():
     print("load first")

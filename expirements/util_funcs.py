@@ -2,7 +2,7 @@ import pickle
 
 import numpy as np
 
-from ml_processing.pathes import path_to_data
+from expirements.pathes import path_to_data
 
 
 def read_vectors_csr():

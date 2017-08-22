@@ -4,7 +4,7 @@ from flask import make_response
 from flask import request
 from flask.templating import render_template
 
-from app.ml_processing.main_processing.funcs import get_probas
+from app.ml_processing.funcs import get_probas
 from run import app
 
 
