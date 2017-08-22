@@ -1,0 +1,79 @@
+<div class="mainDivProject" ng-controller="dataController as ctrl" style="margin-bottom: 50px;">
+    <div class="section">
+        <div class="container">
+            <div class="row voffset">
+                <p>DATA</p>
+            </div>
+            <div class="row voffset">
+                <button type="button" class="btn btn-default" ng-click="showDescriptionModal()">
+                    Описание
+                </button>
+            </div>
+            <div class="row voffset">
+                <ui-select ng-model="ctrl.selectedProject" theme="select2" style="min-width: 300px;"
+                           title="Выберите проект" ng-change="onSelectUiClick(ctrl.selectedProject.id)">
+                    <ui-select-match placeholder="Select a project">
+                        [[$select.selected.title]]
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="item in allProjects | propsFilter: {title: $select.search, description: $select.search}">
+                        <div ng-bind-html="item.title | highlight: $select.search"></div>
+                        <small>
+                            title: [[item.title]]
+                            description: <span ng-bind-html="''+item.title | highlight: $select.search"></span>
+                        </small>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="row voffset">
+                <input id="file-input" type="file" name="file" onchange="angular.element(this).scope().readFile(this)"/>
+                <button type="button" class="btn btn-default" ng-click="uploadFile()" style="margin-top: 20px">
+                    Загрузить
+                </button>
+            </div>
+            <div class="row voffset">
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3" ng-repeat="item in allRecordsByProjectId"
+                                     style="margin-top: 20px;">
+                                    <img
+                                            src="/image/data_image_icon.jpeg"
+                                            class="img-responsive">
+                                    <p>[[item.filename]]</p>
+                                    <a class="btn btn-primary" ng-click="toggle(item);">Подробнее</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <div pageslide ps-open="checked" style="margin-top: 40px">
+                                        <div style="padding:20px" id="demo-right">
+                                            <div class="row voffset">
+                                                <p>[[selectedItem.filename]]</p>
+                                            </div>
+                                            <div class="row voffset">
+                                                <button type="button" class="btn btn-default"
+                                                        ng-click="deleteObject(selectedItem)">
+                                                    Удалить
+                                                </button>
+                                            </div>
+                                            <div class="row voffset">
+                                                <a target="_self"
+                                                   href="/object/[[selectedItem.project_id]]/data/[[selectedItem.filename]]"
+                                                   download="[[selectedItem.filename]]" class="btn btn-info" role="button">Скачать</a>
+                                            </div>
+                                            <div class="row voffset">
+                                                <a ng-click="toggle(null)" class="button">Close</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

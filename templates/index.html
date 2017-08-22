@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/angular/angular.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bower_components/angular-modal-service/dst/angular-modal-service.js') }}"></script>
+
+    <link href="{{ url_for('static', filename='bower_components/angular-ui-select/dist/select.css') }}"
+          rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/simple-sidebar.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/dbtek/angular-aside/master/dist/css/angular-aside.css"/>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-route/angular-route.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-aside/dist/js/angular-aside.js') }}"></script>
+
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-sanitize/angular-sanitize.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/showdown/dist/showdown.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/ng-showdown/dist/ng-showdown.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-bootstrap-dropdown/dist/bsDropdown.min.js') }}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/utils/urls.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-ui-select/dist/select.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-animate/angular-animate.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.js') }}"></script>
+
+    <!-- контроллеры -->
+    <script src="{{ url_for('static', filename='js/controllers/mainController.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controllers/projectController.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controllers/dataController.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controllers/algorithmsController.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controllers/analysClassifController.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/controllers/pageslideController.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/controllers/modalController.js') }}"></script>
+
+    <!-- фильтры -->
+    <script src="{{ url_for('static', filename='js/filters/mainFilters.js') }}"></script>
+
+    <!-- директивы -->
+    <script src="{{ url_for('static', filename='js/directives/menuDirective.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/analysClassif.css') }}">
+
+    <base href="/#mainPage"></base>
+
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> </head>
+
+</head>
+<body ng-app="myApp">
+  <div class="py-5 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card my-1">
+            <div class="card-block text-center">
+              <h2>Small</h2>
+              <h3>10 $</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-block">
+              <a href="#" class="btn btn-block btn-primary">Subscribe</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card ">
+            <div class="bg-primary card-block">
+              <h1 class="card-title text-white">Normal</h1>
+              <h2 class="text-white">20 $</h2>
+            </div>
+            <ul class="list-group list-group-flush ">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-block ">
+              <a href="#" class="btn btn-block btn-lg btn-primary">Subscribe</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card my-1">
+            <div class="card-block text-xs-center">
+              <h2 class="card-title">Large</h2>
+              <h3 class="">30 $</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-block ">
+              <a href="#" class="btn btn-block btn-primary">Subscribe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+
+</body>
+</html>

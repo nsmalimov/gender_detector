@@ -1,0 +1,55 @@
+<div class="mainDivProject" ng-controller="projectController">
+    <div class="section">
+        <div class="container">
+            <div class="row voffset">
+                <p>PROJECTS</p>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-default" ng-click="createNewFormFunc()">Новый проект</button>
+            </div>
+            <div class="row voffset">
+                <div class="input-group" ng-if="createNewFlag">
+                    <p>Название</p>
+                    <input style="margin-bottom: 10px" type="text" class="form-control" ng-model="projectObject.title">
+                    <p>Описание</p>
+                    <input type="text" class="form-control" ng-model="projectObject.description">
+                    <button type="button" class="btn btn-default" ng-click="createProjectFunc()"
+                            style="margin-top: 20px">Создать
+                    </button>
+                </div>
+            </div>
+            <div class="row voffset fill">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="" ng-repeat="item in allProjects" ng-click="toggle(item)" class="list-group-item">
+                                <span class="badge">></span>
+                                <div>[[item.title]]</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div pageslide ps-open="checked" style="margin-top: 40px">
+            <div style="padding:20px" id="demo-right">
+                <div class="row voffset">
+                    <p>[[selectedItem.title]]</p>
+                    <p>[[selectedItem.description]]</p>
+                    <p>[[selectedItem.modified_at | date:'medium']]</p>
+                </div>
+                <div class="row voffset">
+                    <button type="button" class="btn btn-default"
+                            ng-click="deleteObject(selectedItem)">
+                        Удалить
+                    </button>
+                </div>
+                <div class="row voffset">
+                    <a ng-click="toggle(null)" class="button">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
