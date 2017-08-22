@@ -1,13 +1,17 @@
 import json
 
-from flask import request
 from flask import make_response
+from flask import request
 from flask.templating import render_template
+
+from app.ml_processing.main_processing.funcs import get_probas
 from run import app
+
 
 @app.route('/')
 def hello_world():
     return render_template("index.html")
+
 
 @app.route('/get_probas', methods=['GET', 'POST'])
 def upload_data():
@@ -15,11 +19,8 @@ def upload_data():
         jsonData = request.get_json()
         text = jsonData['text']
 
-        print (text)
+        proba_male, proba_female = get_probas(text)
 
-        # TODO
-        # ml processing part
-
-        res_dict = {"proba_male": "20", "proba_female": "80"}
+        res_dict = {"proba_male": proba_male, "proba_female": proba_female}
 
         return make_response(json.dumps(res_dict))
