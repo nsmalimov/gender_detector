@@ -44,14 +44,7 @@
 
     <!-- контроллеры -->
     <script src="{{ url_for('static', filename='js/controllers/mainController.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/controllers/projectController.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/controllers/dataController.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/controllers/algorithmsController.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/controllers/analysClassifController.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='js/controllers/pageslideController.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='js/controllers/modalController.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controllers/genderDetectorController.js') }}"></script>
 
     <!-- фильтры -->
     <script src="{{ url_for('static', filename='js/filters/mainFilters.js') }}"></script>
@@ -66,39 +59,38 @@
 
 </head>
 <body ng-app="myApp" class="text-center" style="margin-top: 250px">
-<div class="container">
+<div class="container" ng-controller="genderDetectorController as ctrl">
 
     <div>
         <!-- Вероятности -->
-        <div class="col-md-12">
-            <h4 class="mb-4">Мужчина вероятность:</h4>
-            <h4 class="mb-4">Женщина вероятность:</h4>
+        <div class="col-md-12" ng-if="isUsed">
+            <h4 class="mb-4">Мужчина общая вероятность: [[fullProbaMale]]</h4>
+            <h4 class="mb-4">Женщина общая вероятность: [[fullProbaFemale]]</h4>
         </div>
 
         <!-- История -->
-        <div>
-            <p class="lead">Three days immersion in the world of UX/UI prototyping. Meet the most important design
-                influencer of the moment, assist to speeches given by worldwide known designers and much, much more.
-                <br>The unique possibility to enhance your professionality with the smallest effort.</p>
+        <div class="col-md-12">
+            <p ng-bind-html="historyText"></p>
         </div>
 
         <!-- Поле запроса -->
-        <div>
+        <div class="col-md-12">
             <h4>Введите запрос</h4>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="textFromInput">
         </div>
 
         <!-- Кнопки -->
-        <div>
+        <div class="col-md-12">
             <div style="margin-top: 50px">
-                <button type="button" class="btn btn-default">Определить пол</button>
-                <button type="button" class="btn btn-default">Начать сначала</button>
+                <button type="button" class="btn btn-default" ng-click="getGender()">Определить пол</button>
+                <button type="button" class="btn btn-default" ng-click="resetHistory()">Начать сначала</button>
             </div>
         </div>
 
         <!-- Результаты после запроса -->
-        <div>
-
+        <div class="col-md-12" style="margin-top: 30px">
+            <h5 class="mb-4">Мужчина вероятность:</h5>
+            <h5 class="mb-4">Женщина вероятность:</h5>
         </div>
     </div>
 </div>
