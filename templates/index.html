@@ -81,16 +81,16 @@
 
         <!-- Кнопки -->
         <div class="col-md-12">
-            <div style="margin-top: 50px">
+            <div style="margin-top: 40px">
                 <button type="button" class="btn btn-default" ng-click="getGender()">Определить пол</button>
-                <button type="button" class="btn btn-default" ng-click="resetHistory()">Начать сначала</button>
+                <button type="button" class="btn btn-default" ng-click="resetHistory()" ng-if="isUsed">Начать сначала</button>
             </div>
         </div>
 
         <!-- Результаты после запроса -->
-        <div class="col-md-12" style="margin-top: 30px">
-            <h5 class="mb-4">Мужчина вероятность:</h5>
-            <h5 class="mb-4">Женщина вероятность:</h5>
+        <div class="col-md-12" style="margin-top: 30px" ng-if="isUsed">
+            <h5 class="mb-4">Мужчина вероятность: [[gotProbasFromServerMale]]</h5>
+            <h5 class="mb-4">Женщина вероятность: [[gotProbasFromServerFemale]]</h5>
         </div>
     </div>
 </div>

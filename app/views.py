@@ -12,33 +12,21 @@ from run import app
 def hello_world():
     return render_template("index.html")
 
+@app.route('/get_probas', methods=['GET', 'POST'])
+def upload_data():
+    if request.method == 'POST':
+        text = request.form.get('text')
 
-# @app.route('/partials/<path:path>')
-# def serve_partial(path):
-#     return render_template('/partials/{}'.format(path))
-#
-#
-# @app.route('/data_upload/<project_id>', methods=['GET', 'POST'])
-# def upload_data(project_id):
-#     if request.method == 'POST':
-#         file = request.files['file']
-#         filename = secure_filename(file.filename)
-#
-#         save_file(file, filename, project_id, "data")
-#
-#         data = Data(filename)
-#
-#         db.session.add(data)
-#         db.session.commit()
-#
-#         project = Project.query.filter_by(id=project_id).first()
-#         project.records.append(data)
-#
-#         db.session.commit()
-#
-#         return 'file uploaded successfully'
-#
-#
+        print (text)
+
+        # TODO
+        # ml processing part
+
+        res_dict = {"proba_male": "20", "proba_female": "80"}
+
+        return make_response(json.dumps(res_dict))
+
+
 # @app.route('/algorithm_upload/<project_id>', methods=['GET', 'POST'])
 # def upload_algorithm(project_id):
 #     if request.method == 'POST':
