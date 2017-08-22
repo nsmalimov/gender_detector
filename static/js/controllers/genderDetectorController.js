@@ -1,10 +1,13 @@
-myApp.controller("genderDetectorController", ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
+myApp.controller("genderDetectorController", ['$scope', '$http', function ($scope, $http) {
 
     $scope.fullProbaMale = null;
     $scope.fullProbaFemale = null;
 
     $scope.gotProbasFromServerMale = null;
     $scope.gotProbasFromServerFemale = null;
+
+    $scope.probasMaleArr = [];
+    $scope.probasFemaleArr = [];
 
     $scope.isUsed = false;
 
@@ -21,17 +24,26 @@ myApp.controller("genderDetectorController", ['$scope', 'ModalService', '$http',
 
     $scope.getGender = function () {
         $scope.historyText += $scope.textFromInput + "<br>";
+        $scope.getProbasFromServer({"text": $scope.textFromInput});
         $scope.resetData();
         $scope.isUsed = true;
-        $scope.getProbasFromServer({"text": $scope.textFromInput});
     };
 
     $scope.resetHistory = function () {
         $scope.resetData();
         $scope.historyText = "";
+        $scope.isUsed = false;
     };
 
     $scope.init();
+
+    $scope.getMeanInArray = function (array) {
+        var total = 0;
+        for (var i = 0; i < array.length; i++) {
+            total += array[i];
+        }
+        return total / array.length;
+    };
 
     $scope.getProbasFromServer = function (item) {
         $http({
@@ -42,8 +54,14 @@ myApp.controller("genderDetectorController", ['$scope', 'ModalService', '$http',
             contentType: 'application/json'
         }).then(function successCallback(response) {
             var data = response.data;
-            $scope.gotProbasFromServerMale = data.proba_male + "%";
-            $scope.gotProbasFromServerFemale = data.proba_female + "%";
+            $scope.gotProbasFromServerMale = response.data.proba_male + "%";
+            $scope.gotProbasFromServerFemale = response.data.proba_female + "%";
+
+            $scope.probasMaleArr.push(parseInt(response.data.proba_male));
+            $scope.probasFemaleArr.push(parseInt(response.data.proba_female));
+
+            $scope.fullProbaMale = $scope.getMeanInArray($scope.probasMaleArr) + "%";
+            $scope.fullProbaFemale = $scope.getMeanInArray($scope.probasFemaleArr) + "%";
 
         }, function errorCallback(response) {
         })

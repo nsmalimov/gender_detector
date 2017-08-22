@@ -1,2 +1,2 @@
-var myApp = angular.module('myApp', ['ng.bs.dropdown', 'pageslide-directive', 'ngSanitize', 'ng-showdown', 'ui.bootstrap', 'ngRoute', 'ui.select', 'angularModalService', 'ngAnimate']).config(function ($routeProvider, $locationProvider) {
+var myApp = angular.module('myApp', ['ngSanitize']).config(function () {
 });

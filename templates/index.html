@@ -5,57 +5,16 @@
     <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bower_components/angular/angular.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.css') }}">
-    <script src="{{ url_for('static', filename='bower_components/angular-modal-service/dst/angular-modal-service.js') }}"></script>
-
-    <link href="{{ url_for('static', filename='bower_components/angular-ui-select/dist/select.css') }}"
-          rel="stylesheet">
-
-    <link href="{{ url_for('static', filename='css/simple-sidebar.css') }}" rel="stylesheet">
-
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://rawgit.com/dbtek/angular-aside/master/dist/css/angular-aside.css"/>
-
-    <script src="{{ url_for('static', filename='bower_components/angular-route/angular-route.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='bower_components/angular-aside/dist/js/angular-aside.js') }}"></script>
-
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
-
     <script src="{{ url_for('static', filename='bower_components/angular-sanitize/angular-sanitize.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/showdown/dist/showdown.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/ng-showdown/dist/ng-showdown.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='bower_components/angular-bootstrap-dropdown/dist/bsDropdown.min.js') }}"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
     <script src="{{ url_for('static', filename='js/utils/urls.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='bower_components/angular-ui-select/dist/select.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='bower_components/angular-animate/angular-animate.min.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.js') }}"></script>
-
     <!-- контроллеры -->
     <script src="{{ url_for('static', filename='js/controllers/mainController.js') }}"></script>
     <script src="{{ url_for('static', filename='js/controllers/genderDetectorController.js') }}"></script>
-
-    <!-- фильтры -->
-    <script src="{{ url_for('static', filename='js/filters/mainFilters.js') }}"></script>
-
-    <!-- директивы -->
-    <script src="{{ url_for('static', filename='js/directives/menuDirective.js') }}"></script>
-
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/analysClassif.css') }}">-->
-
-    <base href="/#mainPage"></base>
-
 
 </head>
 <body ng-app="myApp" class="text-center" style="margin-top: 250px">
@@ -64,8 +23,8 @@
     <div>
         <!-- Вероятности -->
         <div class="col-md-12" ng-if="isUsed">
-            <h4 class="mb-4">Мужчина общая вероятность: [[fullProbaMale]]</h4>
-            <h4 class="mb-4">Женщина общая вероятность: [[fullProbaFemale]]</h4>
+            <h4 class="mb-4">Мальчик общая вероятность: [[fullProbaMale]]</h4>
+            <h4 class="mb-4">Девочка общая вероятность: [[fullProbaFemale]]</h4>
         </div>
 
         <!-- История -->
@@ -89,8 +48,8 @@
 
         <!-- Результаты после запроса -->
         <div class="col-md-12" style="margin-top: 30px" ng-if="isUsed">
-            <h5 class="mb-4">Мужчина вероятность: [[gotProbasFromServerMale]]</h5>
-            <h5 class="mb-4">Женщина вероятность: [[gotProbasFromServerFemale]]</h5>
+            <h5 class="mb-4">Мальчик вероятность: [[gotProbasFromServerMale]]</h5>
+            <h5 class="mb-4">Девочка вероятность: [[gotProbasFromServerFemale]]</h5>
         </div>
     </div>
 </div>
