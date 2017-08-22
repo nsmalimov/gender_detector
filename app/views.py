@@ -12,8 +12,8 @@ def hello_world():
 @app.route('/get_probas', methods=['GET', 'POST'])
 def upload_data():
     if request.method == 'POST':
-        print (request.form)
-        text = request.form.get('text')
+        jsonData = request.get_json()
+        text = jsonData['text']
 
         print (text)
 

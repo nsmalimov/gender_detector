@@ -25,7 +25,6 @@ myApp.controller("genderDetectorController", ['$scope', '$http', function ($scop
     $scope.getGender = function () {
         $scope.historyText += $scope.textFromInput + "<br>";
         $scope.getProbasFromServer({"text": $scope.textFromInput});
-        $scope.resetData();
         $scope.isUsed = true;
     };
 
@@ -46,6 +45,7 @@ myApp.controller("genderDetectorController", ['$scope', '$http', function ($scop
     };
 
     $scope.getProbasFromServer = function (item) {
+        console.log(JSON.stringify(item));
         $http({
             method: 'POST',
             dataType: 'json',
@@ -63,6 +63,7 @@ myApp.controller("genderDetectorController", ['$scope', '$http', function ($scop
             $scope.fullProbaMale = $scope.getMeanInArray($scope.probasMaleArr) + "%";
             $scope.fullProbaFemale = $scope.getMeanInArray($scope.probasFemaleArr) + "%";
 
+            $scope.resetData();
         }, function errorCallback(response) {
         })
     };
