@@ -9,13 +9,21 @@ def read_vectors_csr():
     return pickle.load(open(path_to_data + "vec_vectorizer", "rb"))
 
 
-def read_w2v_2():
-    data = np.loadtxt(path_to_data + "vec_w2v_2", delimiter=',')
+def read_w2v_2(with_labels=False):
+    if not(with_labels):
+        path = path_to_data + "vec_w2v_2_no_label"
+    else:
+        path = path_to_data + "vec_w2v_2_exist_label"
+    data = np.loadtxt(path, delimiter=',')
     return data
 
 
-def read_w2v_1():
-    data = np.loadtxt(path_to_data + "vec_w2v_1", delimiter=',')
+def read_w2v_1(with_labels=False):
+    if not(with_labels):
+        path = path_to_data + "vec_w2v_1_no_label"
+    else:
+        path = path_to_data + "vec_w2v_1_exist_label"
+    data = np.loadtxt(path, delimiter=',')
     return data
 
 

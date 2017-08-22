@@ -2,15 +2,34 @@ import fasttext
 from pathes import path_to_data
 from util_funcs import read_texts, read_labels
 import re
+from nltk.stem.snowball import SnowballStemmer
+
+def string_preprocessing(texts):
+    stemmer = SnowballStemmer("russian")
+
+    validLetters = "abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+
+    for i in range(len(texts)):
+        texts[i] = texts[i].lower()
+
+        s = ""
+        for char in texts[i]:
+            if char in validLetters or char == ' ':
+                s += char
+
+        texts[i] = s.replace("  ", " ")
+
+        l = [stemmer.stem(word) for word in texts[i].split(" ")]
+
+        texts[i] = " ".join(l)
+
+        if i % 1000 == 0:
+            print (i)
+
+    return texts
 
 def update_text_for_fasttext():
     texts = read_texts()
-
-    for i in range(len(texts)):
-        texts[i] =  re.sub("[^a-zA-Z]+", "", texts[i])
-        print (texts[i])
-
-    exit()
 
     labels = read_labels()
 
@@ -46,7 +65,8 @@ update_text_for_fasttext()
 # Skipgram model
 #model = fasttext.skipgram(path_to_data + "texts", 'model')
 
-classifier = fasttext.supervised(path_to_data + "texts_updated_test", 'model', label_prefix='__label__')
+classifier = fasttext.supervised(path_to_data + "texts_updated_test", 'model', label_prefix='__label__',
+                                 epoch=30)
 
 result = classifier.test(path_to_data + "texts_updated_test")
 print ('P@1:', result.precision)

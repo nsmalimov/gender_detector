@@ -78,7 +78,7 @@ def keras_perceptron_plain(X, y):
 
     return model
 
-features = read_w2v_2()
+features = read_w2v_2(False)
 labels = read_labels()
 
 print ("start train")
