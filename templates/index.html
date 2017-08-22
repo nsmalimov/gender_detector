@@ -59,69 +59,41 @@
     <!-- директивы -->
     <script src="{{ url_for('static', filename='js/directives/menuDirective.js') }}"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">-->
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/analysClassif.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/analysClassif.css') }}">-->
 
     <base href="/#mainPage"></base>
 
-      <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> </head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          type="text/css">
+    <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
 
 </head>
-<body ng-app="myApp">
-  <div class="py-5 text-center">
+<body ng-app="myApp" class="text-center">
+  <div class="d-flex align-items-center text-left h-50 bg-opaque mask mask-faded-out text-white" id="cover">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card my-1">
-            <div class="card-block text-center">
-              <h2>Small</h2>
-              <h3>10 $</h3>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-block">
-              <a href="#" class="btn btn-block btn-primary">Subscribe</a>
-            </div>
-          </div>
+        <div class="col-lg-12">
         </div>
-        <div class="col-md-4">
-          <div class="card ">
-            <div class="bg-primary card-block">
-              <h1 class="card-title text-white">Normal</h1>
-              <h2 class="text-white">20 $</h2>
-            </div>
-            <ul class="list-group list-group-flush ">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-block ">
-              <a href="#" class="btn btn-block btn-lg btn-primary">Subscribe</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card my-1">
-            <div class="card-block text-xs-center">
-              <h2 class="card-title">Large</h2>
-              <h3 class="">30 $</h3>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-block ">
-              <a href="#" class="btn btn-block btn-primary">Subscribe</a>
-            </div>
-          </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 section" id="about">
+    <div class="container">
+      <div class="row w-75 mx-auto">
+        <div class="col-md-12">
+          <h1 class="mb-4">Мужчина вероятность:</h1>
+            <h1 class="mb-4">Женщина вероятность:</h1>
+          <p class="lead">Three days immersion in the world of UX/UI prototyping. Meet the most important design influencer of the moment, assist to speeches given by worldwide known designers and much, much more.
+            <br>The unique possibility to enhance your professionality with the smallest effort.</p>
+          <a class="btn m-3 btn-outline-secondary">Определить пол</a>
+          <a class="btn m-3 btn-secondary">Начать сначала</a>
         </div>
       </div>
     </div>
@@ -129,6 +101,8 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+  <script src="https://pingendo.com/assets/scripts/smooth-scroll.js"></script>
+  <script src="https://pingendo.com/assets/scripts/slidein-images.js"></script>
 
 </body>
 </html>

@@ -6,7 +6,6 @@ from flask.templating import render_template
 from werkzeug.utils import secure_filename
 
 from app.util.funcs import *
-from app.workers.processing import start_processing_func
 from run import app
 
 @app.route('/')
