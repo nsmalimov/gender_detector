@@ -37,8 +37,8 @@ def prepare():
 
 texts, labels = prepare()
 
-texts = texts[0:10000]
-labels = labels[0:10000]
+#texts = texts[0:10000]
+#labels = labels[0:10000]
 
 write_texts(texts)
 write_labels(labels)
