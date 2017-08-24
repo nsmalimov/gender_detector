@@ -58,3 +58,9 @@ def write_labels(labels):
     with open(path_to_data + "labels", "w") as f:
         for label in labels:
             f.write(str(label) + "\n")
+
+
+def read_features_full():
+    data = np.loadtxt(path_to_data + "features_full", delimiter=',')
+    return data
+

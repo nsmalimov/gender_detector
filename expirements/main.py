@@ -37,9 +37,13 @@ def prepare():
 
 texts, labels = prepare()
 
+texts = texts[0:10000]
+labels = labels[0:10000]
 
 write_texts(texts)
 write_labels(labels)
+
+exit()
 
 class SentencesIterator(object):
     def __init__(self, corpus_dir, filenames):
@@ -61,7 +65,7 @@ def create_w2v_own():
     model.wv.save_word2vec_format(path_to_w2v_models + "/own_w2v_model", binary=True)
 
 
-# create_w2v_own()
+create_w2v_own()
 
 def create_vectorizer(texts, use_if_idf=False):
     if use_if_idf:
@@ -111,20 +115,20 @@ def write_vec_w2v_1():
                         "ruscorpora_1_600_2.bin",  # 400,
                         "ruscorpora_1_300_10.bin"]  # 200 NOUN, ADJ
 
-    w2v_big = KeyedVectors.load_word2vec_format(path_to_w2v_models + exist_big_models[0], binary=True)
+    w2v_big = KeyedVectors.load_word2vec_format(path_to_w2v_models + exist_big_models[1], binary=True)
 
     vec_w2v_1 = get_vectors_by_texts_w2v_model(w2v_big, texts)
 
     print(vec_w2v_1.shape)
 
-    vec_w2v_1 = np.append(vec_w2v_1, np.reshape(labels, (len(labels), 1)), axis=1)
+    #vec_w2v_1 = np.append(vec_w2v_1, np.reshape(labels, (len(labels), 1)), axis=1)
 
     print(vec_w2v_1.shape)
 
     np.savetxt(path_to_data + "vec_w2v_1", vec_w2v_1, delimiter=',')
 
 
-#write_vec_w2v_1()
+write_vec_w2v_1()
 
 
 def write_vec_w2v_2():
@@ -134,14 +138,14 @@ def write_vec_w2v_2():
 
     print(vec_w2v_2.shape)
 
-    vec_w2v_2 = np.append(vec_w2v_2, np.reshape(labels, (len(labels), 1)), axis=1)
+    #vec_w2v_2 = np.append(vec_w2v_2, np.reshape(labels, (len(labels), 1)), axis=1)
 
     print(vec_w2v_2.shape)
 
     np.savetxt(path_to_data + "vec_w2v_2", vec_w2v_2, delimiter=',')
 
 
-#write_vec_w2v_2()
+write_vec_w2v_2()
 
 
 def write_vectorizer():
@@ -178,6 +182,8 @@ def data_processing():
     print("start hstack1")
     features = hstack((vec_w2v_1, vec_w2v_2))
     print(features.shape)
+
+    features = features.todense()
     # print("start hstack 2")
     # features = hstack((features, vec_vectorizer))
     # print(features.shape)
@@ -186,4 +192,4 @@ def data_processing():
 
     np.savetxt(path_to_data + "features_full", features, delimiter=',')
 
-# data_processing()
+data_processing()

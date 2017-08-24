@@ -1,10 +1,11 @@
 import numpy as np
 import tensorflow as tf
 from keras.layers import Dense
+from keras.layers.core import Dropout
 from keras.models import Sequential
 from sklearn.model_selection import train_test_split
 
-from ml_processing.util_funcs import read_labels, read_w2v_2
+from expirements.util_funcs import read_labels, read_w2v_2, read_features_full
 
 
 #batch_size = 32
@@ -54,7 +55,10 @@ def keras_perceptron_plain(X, y):
 
     model = Sequential()
     # среднее между размером входа и размером выхода
-    model.add(Dense(32, activation='relu', input_dim=100))
+    model.add(Dense(32, activation='relu', input_dim=400))
+    #model.add(Dense(18, activation='relu', input_dim=400))
+    #model.add(Dropout(0.2))
+    #model.add(Dense(23, activation='relu', input_dim=400))
     model.add(Dense(1, activation='sigmoid'))
 
     model.compile(optimizer='adam',
@@ -74,12 +78,16 @@ def keras_perceptron_plain(X, y):
 
     return model
 
-features = read_w2v_2(False)
+features = read_features_full()
 labels = read_labels()
 
 print ("start train")
 X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.33, random_state=42)
 
-keras_perceptron_plain(X_train, y_train)
+model = keras_perceptron_plain(X_train, y_train)
 
+scores = model.evaluate(X_test, y_test, verbose=0)
+
+print (scores)
+print("Accuracy: %.2f%%" % (scores[1]*100))
 
