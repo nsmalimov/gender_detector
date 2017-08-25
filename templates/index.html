@@ -41,7 +41,7 @@
         <!-- Кнопки -->
         <div class="col-md-12">
             <div style="margin-top: 40px">
-                <button type="button" class="btn btn-default" ng-click="getGender()">Определить пол</button>
+                <button ng-if="textFromInput" type="button" class="btn btn-default" ng-click="getGender()">Определить пол</button>
                 <button type="button" class="btn btn-default" ng-click="resetHistory()" ng-if="isUsed">Начать сначала</button>
             </div>
         </div>
