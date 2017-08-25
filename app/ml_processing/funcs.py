@@ -25,4 +25,6 @@ def get_probas(text, fasttext_model):
     proba_female = round((proba_female * 100))
     proba_male = round((proba_male * 100))
 
+    print (proba_male, proba_female)
+
     return proba_male, proba_female

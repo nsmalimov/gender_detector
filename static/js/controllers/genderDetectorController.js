@@ -40,11 +40,10 @@ myApp.controller("genderDetectorController", ['$scope', '$http', function ($scop
         for (var i = 0; i < array.length; i++) {
             total += array[i];
         }
-        return total / array.length;
+        return Math.round(total / array.length);
     };
 
     $scope.getProbasFromServer = function (item) {
-        console.log(JSON.stringify(item));
         $http({
             method: 'POST',
             dataType: 'json',

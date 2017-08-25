@@ -37,13 +37,13 @@ def prepare():
 
 texts, labels = prepare()
 
-#texts = texts[0:10000]
-#labels = labels[0:10000]
+texts = texts[0:30000]
+labels = labels[0:30000]
 
 write_texts(texts)
 write_labels(labels)
 
-exit()
+#exit()
 
 class SentencesIterator(object):
     def __init__(self, corpus_dir, filenames):
@@ -65,7 +65,7 @@ def create_w2v_own():
     model.wv.save_word2vec_format(path_to_w2v_models + "/own_w2v_model", binary=True)
 
 
-create_w2v_own()
+#create_w2v_own()
 
 def create_vectorizer(texts, use_if_idf=False):
     if use_if_idf:
@@ -128,7 +128,7 @@ def write_vec_w2v_1():
     np.savetxt(path_to_data + "vec_w2v_1", vec_w2v_1, delimiter=',')
 
 
-write_vec_w2v_1()
+#write_vec_w2v_1()
 
 
 def write_vec_w2v_2():
@@ -145,7 +145,7 @@ def write_vec_w2v_2():
     np.savetxt(path_to_data + "vec_w2v_2", vec_w2v_2, delimiter=',')
 
 
-write_vec_w2v_2()
+#write_vec_w2v_2()
 
 
 def write_vectorizer():
@@ -158,6 +158,8 @@ def write_vectorizer():
 
 
 write_vectorizer()
+
+exit()
 
 
 def data_processing():
@@ -175,9 +177,9 @@ def data_processing():
     vec_w2v_2 = csr_matrix(vec_w2v_2)
     print(vec_w2v_2.shape)
 
-    # print("load vectorizer")
-    # with open(path_to_data + "vec_vectorizer", "rb") as f:
-    #    vec_vectorizer = pickle.load(f)
+    print("load vectorizer")
+    with open(path_to_data + "vec_vectorizer", "rb") as f:
+        vec_vectorizer = pickle.load(f)
 
     print("start hstack1")
     features = hstack((vec_w2v_1, vec_w2v_2))
@@ -185,11 +187,11 @@ def data_processing():
 
     features = features.todense()
     # print("start hstack 2")
-    # features = hstack((features, vec_vectorizer))
+    #features = hstack((features, vec_vectorizer))
     # print(features.shape)
 
-    # features = features.toarray()
+    #features = features.toarray()
 
-    np.savetxt(path_to_data + "features_full", features, delimiter=',')
+    np.savetxt(path_to_data + "features_w2v_full", features, delimiter=',')
 
 data_processing()
