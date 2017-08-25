@@ -23,6 +23,9 @@ myApp.controller("genderDetectorController", ['$scope', '$http', function ($scop
     };
 
     $scope.getGender = function () {
+        if ($scope.textFromInput === null) {
+            $scope.textFromInput = "";
+        }
         $scope.getProbasFromServer({"text": $scope.textFromInput});
         $scope.isUsed = true;
     };
