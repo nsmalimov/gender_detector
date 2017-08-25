@@ -1,6 +1,12 @@
 Демо версия: http://54.93.235.17/
 
-<br>project adapted for Python 3</br>
+### Эксперименты
+
+### Логика работы:
+Веб часть реализована с использованием Flask.
+
+### Установка:
+project adapted for Python 3<br>
 
 need ubuntu/linux/mac os
 
